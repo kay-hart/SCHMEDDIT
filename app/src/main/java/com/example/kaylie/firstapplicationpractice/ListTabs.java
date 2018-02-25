@@ -131,15 +131,53 @@ public class ListTabs extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            Fragment fragment = null;
+            switch(position) {
+                case 0:
+                    fragment = new WorkFragment();
+                    break;
+                case 1:
+                    fragment = new EducationFragment();
+                    break;
+                case 2:
+                    fragment = new WellnessFitnessFragment();
+                    break;
+                case 3:
+                    fragment = new HouseholdFragment();
+                    break;
+                case 4:
+                    fragment = new RelationshipFragment();
+                    break;
+                case 5:
+                    fragment = new OtherFragment();
+                    break;
+            }
+            return fragment;
         }
 
         @Override
         public int getCount() {
             // Show 3 total pages.
             return 3;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            switch (position) {
+                case 0:
+                    return "Work";
+                case 1:
+                    return "Education";
+                case 2:
+                    return "Wellness/Fitness";
+                case 3:
+                    return "Household";
+                case 4:
+                    return "Relationship";
+                case 5:
+                    return "Other";
+            }
+            return null;
         }
     }
 }
